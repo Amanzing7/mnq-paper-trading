@@ -4,7 +4,7 @@
   "on": {
     "schedule": [
       {
-        "cron": "*/10 5-14 * * 1-5"
+        "cron": "7 * * * *"
       }
     ],
     "workflow_dispatch": {
@@ -31,11 +31,14 @@
   "jobs": {
     "run": {
       "runs-on": "ubuntu-latest",
-      "timeout-minutes": 8,
+      "timeout-minutes": 15,
       "env": {
-        "FILTER": "${{ vars.FILTER || '0' }}",
-        "QTY": "${{ vars.QTY || '1' }}",
-        "MAX_RISK": "${{ vars.MAX_RISK || '150' }}"
+        "FILTERS": "${{ vars.FILTERS || '0,2' }}",
+        "INSTRUMENTS": "${{ vars.INSTRUMENTS || '' }}",
+        "MAX_RISK": "${{ vars.MAX_RISK || '150' }}",
+        "RISK_USD": "${{ vars.RISK_USD || '20' }}",
+        "MAX_NOTIONAL": "${{ vars.MAX_NOTIONAL || '3000' }}",
+        "PERP_SESSIONS": "${{ vars.PERP_SESSIONS || '' }}"
       },
       "steps": [
         {
@@ -57,7 +60,7 @@
         },
         {
           "name": "Save results",
-          "run": "git config user.name \"paper-bot\"\ngit config user.email \"paper-bot@users.noreply.github.com\"\ngit add -A\ngit diff --cached --quiet || (git commit -m \"paper trader update\" && git pull --rebase -q && git push)\n"
+          "run": "git config user.name \"paper-bot\"\ngit config user.email \"paper-bot@users.noreply.github.com\"\nprintf '__pycache__/\\n.venv/\\n' > .gitignore\ngit rm -r -q --cached __pycache__ 2>/dev/null || true\ngit add -A\ngit diff --cached --quiet || (git commit -m \"paper trader update\" && git pull --rebase -q && git push)"
         }
       ]
     }
