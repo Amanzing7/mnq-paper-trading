@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import math
 import os
 import sys
 import time
@@ -43,6 +44,15 @@ class Params:
     f2_max: float = 0.25
     f3_min: float = 20.0
     f5_mult: float = 1.5
+    # instrument kind: "future" = fixed contracts, $ commission; "perp" = risk-based fractional size, bps costs
+    range_start_min: int = 60    # the 15-minute range starts here (minutes after midnight New York time); 60 = 01:00
+    session: str = ""
+    kind: str = "future"
+    symbol: str = ""
+    slip_bps: float = 2.0        # perp: slippage per side in basis points of price
+    fee_bps: float = 1.0         # perp: taker fee per side in basis points of notional
+    risk_usd: float = 20.0       # perp: size each trade so a stop-out loses about this much
+    max_notional: float = 3000.0 # perp: cap on position value (about 3x a $1,000 account)
 
 
 # ───────────────────────── data ─────────────────────────
@@ -125,11 +135,12 @@ def simulate_day(bars: pd.DataFrame, day, dctx: pd.DataFrame | None, p: Params) 
     """bars: prepared 5m bars (NY tz) for the calendar day `day`. Returns a trade dict or None.
     status is 'closed' or 'open' (still running because data ends before it resolves)."""
     mins = bars.index.hour * 60 + bars.index.minute
-    rng = bars[(mins >= 60) & (mins < 75)]
+    rs = p.range_start_min
+    rng = bars[(mins >= rs) & (mins < rs + 15)]
     if len(rng) < 3:
         return None
     rH, rL = rng["High"].max(), rng["Low"].min()
-    post_idx = np.where((mins >= 75) & (mins < p.cutoff_min))[0]
+    post_idx = np.where((mins >= rs + 15) & (mins < p.cutoff_min))[0]
 
     for k in post_idx:
         b = bars.iloc[k]
@@ -141,13 +152,21 @@ def simulate_day(bars: pd.DataFrame, day, dctx: pd.DataFrame | None, p: Params) 
         stop = float(rL if side == "long" else rH)
         risk = abs(entry_sig - stop)
         tgt = entry_sig + p.rr * risk if side == "long" else entry_sig - p.rr * risk
-        if p.max_risk_usd and risk * p.pv * p.qty > p.max_risk_usd:
+        qty = p.qty
+        if p.kind == "perp":
+            if risk <= 0:
+                return None
+            qty = min(p.risk_usd / risk, p.max_notional / entry_sig)
+            qty = math.floor(qty * 10000) / 10000
+            if qty <= 0:
+                return None
+        elif p.max_risk_usd and risk * p.pv * qty > p.max_risk_usd:
             return None
         if not _filter_ok(side, b, rH, rL, dctx, day, p):
             return None
-        slip = p.slip_ticks * p.tick
+        slip = entry_sig * p.slip_bps / 1e4 if p.kind == "perp" else p.slip_ticks * p.tick
         entry = entry_sig + slip if side == "long" else entry_sig - slip
-        trade = dict(date=str(day), side=side, entry_time=str(bars.index[k]), entry=entry, stop=stop,
+        trade = dict(date=str(day), session=p.session, symbol=p.symbol, qty=qty, side=side, entry_time=str(bars.index[k]), entry=entry, stop=stop,
                      target=tgt, range_high=rH, range_low=rL, status="open", exit=None, reason="", pnl=None)
         sign = 1 if side == "long" else -1
         for j in range(k + 1, len(bars)):
@@ -171,7 +190,12 @@ def simulate_day(bars: pd.DataFrame, day, dctx: pd.DataFrame | None, p: Params) 
                 trade.update(exit=float(last["Close"]) - sign * slip, reason="time")
         if trade["exit"] is not None:
             pts = (trade["exit"] - entry) * sign
-            trade.update(status="closed", pnl=pts * p.pv * p.qty - 2 * p.comm_side * p.qty)
+            gross = pts * p.pv * qty
+            if p.kind == "perp":
+                fees = p.fee_bps / 1e4 * (entry + trade["exit"]) * qty
+            else:
+                fees = 2 * p.comm_side * qty
+            trade.update(status="closed", pnl=gross - fees)
         return trade
     return None
 
@@ -238,14 +262,15 @@ def cmd_backtest(args):
     print("\nWith only ~40 trading days these numbers are noise-level. Treat them as a smoke test, not proof.")
 
 
-FIELDS = ["date", "side", "entry_time", "entry", "stop", "target", "range_high", "range_low", "status", "exit", "reason", "pnl"]
+FIELDS = ["date", "session", "symbol", "qty", "side", "entry_time", "entry", "stop", "target", "range_high", "range_low", "status", "exit", "reason", "pnl"]
 
 
 def save_trade(t: dict, path="data/paper_trades.csv"):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     rows = []
     if os.path.exists(path):
-        rows = [r for r in csv.DictReader(open(path)) if r["date"] != t["date"]]
+        rows = [r for r in csv.DictReader(open(path))
+                if not (r["date"] == t["date"] and (r.get("session") or "") == (t.get("session") or ""))]
     rows.append({k: t.get(k) for k in FIELDS})
     with open(path, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
