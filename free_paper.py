@@ -37,6 +37,7 @@ class Params:
     slip_ticks: float = 1.0      # per side, applied to market-style fills (entry, stop, time exit)
     comm_side: float = 0.75
     max_risk_usd: float = 150.0  # skip trades whose stop risk is bigger (0 = off)
+    futures_hours: bool = True   # perps: skip bars when the underlying futures market is closed (Fri 17:00 ET - Sun 18:00 ET, 17:00-18:00 daily)
     max_stop_bps: float = 0.0    # skip trades whose stop is wider than this many bps of price (0 = off)
     tick: float = 0.25
     pv: float = 2.0              # $ per point, MNQ
@@ -53,7 +54,7 @@ class Params:
     slip_bps: float = 2.0        # perp: slippage per side in basis points of price
     fee_bps: float = 1.0         # perp: taker fee per side in basis points of notional
     risk_usd: float = 20.0       # perp: size each trade so a stop-out loses about this much
-    max_notional: float = 3000.0 # perp: cap on position value (about 3x a $1,000 account)
+    max_notional: float = 15000.0 # perp: cap on position value (about 3x a $1,000 account)
 
 
 # ───────────────────────── data ─────────────────────────
@@ -131,10 +132,18 @@ def _prev_daily(ctx: pd.DataFrame, day) -> pd.Series | None:
     return prior.iloc[-1] if len(prior) else None
 
 
+def closed_mask(index) -> np.ndarray:
+    """True for bars when index/commodity futures (and so trade.xyz / Lighter external pricing) are closed, New York clock."""
+    dow, m = np.asarray(index.dayofweek), np.asarray(index.hour * 60 + index.minute)
+    return (dow == 5) | ((dow == 4) & (m >= 1020)) | ((dow == 6) & (m < 1080)) | ((dow <= 3) & (m >= 1020) & (m < 1080))
+
+
 # ───────────────────────── strategy ─────────────────────────
 def simulate_day(bars: pd.DataFrame, day, dctx: pd.DataFrame | None, p: Params) -> dict | None:
     """bars: prepared 5m bars (NY tz) for the calendar day `day`. Returns a trade dict or None.
     status is 'closed' or 'open' (still running because data ends before it resolves)."""
+    if p.kind == "perp" and p.futures_hours:
+        bars = bars[~closed_mask(bars.index)]
     mins = bars.index.hour * 60 + bars.index.minute
     rs = p.range_start_min
     rng = bars[(mins >= rs) & (mins < rs + 15)]
@@ -170,7 +179,8 @@ def simulate_day(bars: pd.DataFrame, day, dctx: pd.DataFrame | None, p: Params) 
         slip = entry_sig * p.slip_bps / 1e4 if p.kind == "perp" else p.slip_ticks * p.tick
         entry = entry_sig + slip if side == "long" else entry_sig - slip
         trade = dict(date=str(day), session=p.session, symbol=p.symbol, qty=qty, side=side, entry_time=str(bars.index[k]), entry=entry, stop=stop,
-                     target=tgt, range_high=rH, range_low=rL, status="open", exit=None, reason="", pnl=None)
+                     target=tgt, range_high=rH, range_low=rL, status="open", exit=None, reason="", pnl=None,
+                     risk=risk * p.pv * qty)
         sign = 1 if side == "long" else -1
         for j in range(k + 1, len(bars)):
             x = bars.iloc[j]
@@ -243,7 +253,9 @@ def stats(trades: list[dict], capital: float = 1000.0) -> dict:
     eq = capital + np.cumsum(pnl)
     peak = np.maximum.accumulate(np.concatenate([[capital], eq]))[1:]
     gp, gl = pnl[pnl > 0].sum(), -pnl[pnl < 0].sum()
-    return dict(trades=len(pnl), win_rate=round(100 * (pnl > 0).mean(), 1), net=round(pnl.sum(), 2),
+    rs_ = [t["pnl"] / t["risk"] for t in closed if t.get("risk")]
+    extra = dict(avg_r=round(float(np.mean(rs_)), 3), net_r=round(float(np.sum(rs_)), 2)) if len(rs_) == len(closed) else {}
+    return dict(**extra, trades=len(pnl), win_rate=round(100 * (pnl > 0).mean(), 1), net=round(pnl.sum(), 2),
                 ret_pct=round(100 * pnl.sum() / capital, 1), max_dd=round(float((peak - eq).max()), 2),
                 profit_factor=round(gp / gl, 2) if gl else float("inf"), avg_trade=round(pnl.mean(), 2))
 
