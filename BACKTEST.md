@@ -15,6 +15,13 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 | 4 Globex VWAP | 33 | 69.7 | 72.25 | 245.75 | 1.08 |
 | 5 volume | 15 | 53.3 | -258.25 | 396.5 | 0.59 |
 
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| $150 cap (as now) | 46 | 71.7 | 199.5 | 1.17 |
+| no cap | 50 | 68.0 | -322.0 | 0.82 |
+
 ## MES: Micro S&P 500
 
 2026-09-01 to 2026-11-10
@@ -27,6 +34,13 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 | 3 60m ADX | 36 | 75.0 | -34.0 | 127.62 | 0.9 |
 | 4 Globex VWAP | 36 | 66.7 | -176.5 | 203.5 | 0.61 |
 | 5 volume | 17 | 58.8 | -155.5 | 201.0 | 0.47 |
+
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| $150 cap (as now) | 50 | 74.0 | -76.88 | 0.85 |
+| no cap | 50 | 74.0 | -76.88 | 0.85 |
 
 ## MYM: Micro Dow
 
@@ -41,6 +55,13 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 | 4 Globex VWAP | 34 | 70.6 | -66.75 | 138.0 | 0.7 |
 | 5 volume | 20 | 85.0 | 50.25 | 58.5 | 1.63 |
 
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| $150 cap (as now) | 50 | 70.0 | -123.25 | 0.65 |
+| no cap | 50 | 70.0 | -123.25 | 0.65 |
+
 ## M2K: Micro Russell 2000
 
 2026-09-01 to 2026-11-10
@@ -53,6 +74,13 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 | 3 60m ADX | 33 | 60.6 | -88.75 | 92.25 | 0.53 |
 | 4 Globex VWAP | 27 | 63.0 | -87.25 | 89.25 | 0.49 |
 | 5 volume | 17 | 70.6 | -14.75 | 29.5 | 0.8 |
+
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| $150 cap (as now) | 50 | 60.0 | -163.0 | 0.46 |
+| no cap | 50 | 60.0 | -163.0 | 0.46 |
 
 ## MCL: Micro WTI crude
 
@@ -67,6 +95,13 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 | 4 Globex VWAP | 33 | 66.7 | -71.0 | 156.0 | 0.81 |
 | 5 volume | 25 | 68.0 | -27.0 | 98.5 | 0.91 |
 
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| $150 cap (as now) | 50 | 66.0 | -173.0 | 0.72 |
+| no cap | 50 | 66.0 | -173.0 | 0.72 |
+
 ## MGC: Micro gold
 
 2026-09-01 to 2026-11-10
@@ -79,6 +114,13 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 | 3 60m ADX | 28 | 78.6 | 341.99 | 304.51 | 1.61 |
 | 4 Globex VWAP | 25 | 76.0 | 264.5 | 308.51 | 1.55 |
 | 5 volume | 15 | 66.7 | -57.01 | 316.01 | 0.89 |
+
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| $150 cap (as now) | 47 | 72.3 | 220.49 | 1.2 |
+| no cap | 50 | 74.0 | 475.49 | 1.43 |
 
 ## XYZ100: XYZ100-USDC (Nasdaq-100 perp)
 
@@ -100,6 +142,16 @@ Cost check (no filter): same trades with zero fees and zero slippage:
 | 68 | 70.6 | 45.43 | 1.35 |
 
 Average stop distance 33.6 bps of price (target is half of that). Assumed round-trip cost about 5.8 bps.
+
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| no cap | 68 | 55.9 | -40.35 | 0.76 |
+| 40 bps | 51 | 56.9 | -11.75 | 0.82 |
+| 30 bps | 45 | 53.3 | -21.03 | 0.61 |
+| 25 bps | 41 | 51.2 | -19.08 | 0.56 |
+| 20 bps | 37 | 45.9 | -27.25 | 0.38 |
 
 Per session, no filter:
 
@@ -131,6 +183,16 @@ Cost check (no filter): same trades with zero fees and zero slippage:
 
 Average stop distance 19.0 bps of price (target is half of that). Assumed round-trip cost about 5.8 bps.
 
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| no cap | 68 | 36.8 | -48.75 | 0.57 |
+| 40 bps | 63 | 34.9 | -57.66 | 0.41 |
+| 30 bps | 58 | 31.0 | -66.99 | 0.26 |
+| 25 bps | 55 | 27.3 | -75.89 | 0.17 |
+| 20 bps | 51 | 25.5 | -61.92 | 0.15 |
+
 Per session, no filter:
 
 | Session | Trades | Win % | Net $ | Profit factor |
@@ -160,6 +222,16 @@ Cost check (no filter): same trades with zero fees and zero slippage:
 | 67 | 64.2 | 24.63 | 1.23 |
 
 Average stop distance 23.9 bps of price (target is half of that). Assumed round-trip cost about 22.0 bps.
+
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| no cap | 67 | 7.5 | -387.75 | 0.03 |
+| 40 bps | 57 | 0.0 | -322.06 | 0.0 |
+| 30 bps | 52 | 0.0 | -300.62 | 0.0 |
+| 25 bps | 47 | 0.0 | -291.29 | 0.0 |
+| 20 bps | 40 | 0.0 | -251.75 | 0.0 |
 
 Per session, no filter:
 
@@ -191,6 +263,16 @@ Cost check (no filter): same trades with zero fees and zero slippage:
 
 Average stop distance 40.8 bps of price (target is half of that). Assumed round-trip cost about 5.8 bps.
 
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| no cap | 68 | 58.8 | -74.04 | 0.72 |
+| 40 bps | 40 | 47.5 | -98.86 | 0.3 |
+| 30 bps | 33 | 42.4 | -95.53 | 0.18 |
+| 25 bps | 27 | 40.7 | -73.51 | 0.14 |
+| 20 bps | 23 | 43.5 | -58.13 | 0.15 |
+
 Per session, no filter:
 
 | Session | Trades | Win % | Net $ | Profit factor |
@@ -221,6 +303,16 @@ Cost check (no filter): same trades with zero fees and zero slippage:
 
 Average stop distance 40.0 bps of price (target is half of that). Assumed round-trip cost about 5.8 bps.
 
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| no cap | 68 | 57.4 | -63.3 | 0.75 |
+| 40 bps | 38 | 47.4 | -79.26 | 0.32 |
+| 30 bps | 31 | 41.9 | -75.09 | 0.19 |
+| 25 bps | 28 | 39.3 | -71.41 | 0.14 |
+| 20 bps | 25 | 36.0 | -68.02 | 0.09 |
+
 Per session, no filter:
 
 | Session | Trades | Win % | Net $ | Profit factor |
@@ -239,7 +331,7 @@ Per session, no filter:
 | 0 none | 68 | 58.8 | -72.16 | 102.35 | 0.64 |
 | 1 daily EMA | 33 | 63.6 | -31.45 | 50.49 | 0.61 |
 | 2 range/ATR | 40 | 67.5 | -32.81 | 54.98 | 0.69 |
-| 3 60m ADX | 47 | 51.1 | -94.85 | 102.64 | 0.42 |
+| 3 60m ADX | 46 | 50.0 | -98.2 | 102.64 | 0.4 |
 | 4 Globex VWAP | 48 | 58.3 | -22.67 | 50.97 | 0.83 |
 | 5 volume | 24 | 58.3 | -22.34 | 35.26 | 0.68 |
 
@@ -250,6 +342,16 @@ Cost check (no filter): same trades with zero fees and zero slippage:
 | 68 | 66.2 | 6.36 | 1.04 |
 
 Average stop distance 35.0 bps of price (target is half of that). Assumed round-trip cost about 6.0 bps.
+
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| no cap | 68 | 58.8 | -72.16 | 0.64 |
+| 40 bps | 51 | 60.8 | -46.12 | 0.54 |
+| 30 bps | 45 | 57.8 | -55.99 | 0.36 |
+| 25 bps | 42 | 59.5 | -39.04 | 0.42 |
+| 20 bps | 38 | 57.9 | -38.01 | 0.36 |
 
 Per session, no filter:
 
@@ -281,6 +383,16 @@ Cost check (no filter): same trades with zero fees and zero slippage:
 
 Average stop distance 19.2 bps of price (target is half of that). Assumed round-trip cost about 6.0 bps.
 
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| no cap | 67 | 38.8 | -43.41 | 0.62 |
+| 40 bps | 62 | 37.1 | -52.43 | 0.47 |
+| 30 bps | 58 | 32.8 | -68.76 | 0.31 |
+| 25 bps | 54 | 29.6 | -69.17 | 0.23 |
+| 20 bps | 51 | 25.5 | -76.32 | 0.15 |
+
 Per session, no filter:
 
 | Session | Trades | Win % | Net $ | Profit factor |
@@ -310,6 +422,16 @@ Cost check (no filter): same trades with zero fees and zero slippage:
 | 68 | 67.6 | 54.84 | 1.56 |
 
 Average stop distance 26.5 bps of price (target is half of that). Assumed round-trip cost about 6.0 bps.
+
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| no cap | 68 | 54.4 | -26.88 | 0.81 |
+| 40 bps | 55 | 52.7 | -31.06 | 0.66 |
+| 30 bps | 48 | 50.0 | -37.74 | 0.51 |
+| 25 bps | 44 | 45.5 | -49.73 | 0.36 |
+| 20 bps | 36 | 38.9 | -47.79 | 0.21 |
 
 Per session, no filter:
 
@@ -341,6 +463,16 @@ Cost check (no filter): same trades with zero fees and zero slippage:
 
 Average stop distance 40.8 bps of price (target is half of that). Assumed round-trip cost about 6.0 bps.
 
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| no cap | 68 | 61.8 | -85.86 | 0.68 |
+| 40 bps | 40 | 57.5 | -68.05 | 0.39 |
+| 30 bps | 35 | 57.1 | -57.57 | 0.35 |
+| 25 bps | 29 | 55.2 | -51.17 | 0.26 |
+| 20 bps | 26 | 53.8 | -47.21 | 0.22 |
+
 Per session, no filter:
 
 | Session | Trades | Win % | Net $ | Profit factor |
@@ -370,6 +502,16 @@ Cost check (no filter): same trades with zero fees and zero slippage:
 | 68 | 67.6 | 73.94 | 1.44 |
 
 Average stop distance 39.1 bps of price (target is half of that). Assumed round-trip cost about 6.0 bps.
+
+Stop-width cap test (no filter):
+
+| Cap | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| no cap | 68 | 66.2 | -5.49 | 0.97 |
+| 40 bps | 42 | 57.1 | -72.36 | 0.42 |
+| 30 bps | 33 | 54.5 | -61.74 | 0.28 |
+| 25 bps | 31 | 51.6 | -68.06 | 0.21 |
+| 20 bps | 25 | 56.0 | -39.87 | 0.24 |
 
 Per session, no filter:
 
