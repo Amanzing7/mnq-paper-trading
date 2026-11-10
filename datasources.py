@@ -30,6 +30,7 @@ def _yahoo_5m(tickers, period):
 
 def _yahoo_daily(tickers):
     import yfinance as yf
+    best = None
     for tk in tickers:
         df = yf.download(tk, period="1y", interval="1d", progress=False, auto_adjust=False)
         if isinstance(df.columns, pd.MultiIndex):
@@ -37,7 +38,12 @@ def _yahoo_daily(tickers):
         df = df[["Open", "High", "Low", "Close"]].dropna()
         if len(df):
             df.index = pd.to_datetime(df.index).tz_localize(None)
-            return df
+            if len(df) >= 60:      # enough history for EMA/ATR; a young contract (e.g. MCL=F) may return only a few rows
+                return df
+            if best is None or len(df) > len(best):
+                best = df
+    if best is not None:
+        return best
     raise RuntimeError(f"no Yahoo daily data for {tickers}")
 
 
