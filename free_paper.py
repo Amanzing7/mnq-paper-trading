@@ -37,6 +37,7 @@ class Params:
     slip_ticks: float = 1.0      # per side, applied to market-style fills (entry, stop, time exit)
     comm_side: float = 0.75
     max_risk_usd: float = 150.0  # skip trades whose stop risk is bigger (0 = off)
+    max_stop_bps: float = 0.0    # skip trades whose stop is wider than this many bps of price (0 = off)
     tick: float = 0.25
     pv: float = 2.0              # $ per point, MNQ
     f1_len: int = 50
@@ -153,6 +154,8 @@ def simulate_day(bars: pd.DataFrame, day, dctx: pd.DataFrame | None, p: Params) 
         risk = abs(entry_sig - stop)
         tgt = entry_sig + p.rr * risk if side == "long" else entry_sig - p.rr * risk
         qty = p.qty
+        if p.max_stop_bps and risk / entry_sig * 1e4 > p.max_stop_bps:
+            return None
         if p.kind == "perp":
             if risk <= 0:
                 return None
