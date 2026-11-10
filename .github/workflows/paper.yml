@@ -10,12 +10,13 @@
     "workflow_dispatch": {
       "inputs": {
         "mode": {
-          "description": "live = check today's signal, backtest = compare all filters",
+          "description": "live = check today's signals, backtest = compare all filters, check = verify Hyperliquid data against futures",
           "default": "live",
           "type": "choice",
           "options": [
             "live",
-            "backtest"
+            "backtest",
+            "check"
           ]
         }
       }
@@ -56,7 +57,7 @@
         },
         {
           "name": "Run",
-          "run": "if [ \"${{ github.event.inputs.mode }}\" = \"backtest\" ]; then python run_once.py --backtest; else python run_once.py; fi\n"
+          "run": "case \"${{ github.event.inputs.mode }}\" in\n  backtest) python run_once.py --backtest ;;\n  check) python run_once.py --check ;;\n  *) python run_once.py ;;\nesac"
         },
         {
           "name": "Save results",
