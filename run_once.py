@@ -118,7 +118,10 @@ def run_backtest(root=".", bars_fn=None, daily_fn=None):
     daily_fn = daily_fn or ds.fetch_daily
     lines = ["# Backtest on recent history", "",
              f"Each filter row is its own ${CAPITAL:,.0f} account. Futures use ~60 days of Yahoo data; Hyperliquid perps only have ~17 days of 5-minute history. "
-             "These samples are tiny: a smoke test, not proof.", ""]
+             "These samples are tiny: a smoke test, not proof.", "",
+             "Avg R is profit per trade in units of the risk planned at entry, so markets and venues can be compared without caring about position size. "
+             "Perp tests skip bars when the underlying futures market is closed (Friday 17:00 to Sunday 18:00 New York time, and 17:00-18:00 daily), "
+             "and size every trade to the same dollar risk (up to a notional cap).", ""]
     for inst in inst_mod.selected():
         lines += [f"## {inst.symbol}: {inst.label}", ""]
         try:
@@ -133,17 +136,19 @@ def run_backtest(root=".", bars_fn=None, daily_fn=None):
         except Exception as e:
             daily, daily_err = None, e
         lines += [f"{df5.index[0].date()} to {df5.index[-1].date()}", ""]
+        if daily is not None:
+            lines += [f"Daily data: {len(daily)} rows, {daily.index[0].date()} to {daily.index[-1].date()}.", ""]
         if daily_err:
             lines += [f"**Daily data failed, so filters 1 and 2 could not run:** {daily_err}", ""]
         lines += [
-                  "| Filter | Trades | Win % | Net $ | Max drawdown $ | Profit factor |", "|---|---|---|---|---|---|"]
+                  "| Filter | Trades | Win % | Net $ | Avg R | Max drawdown $ | Profit factor |", "|---|---|---|---|---|---|---|"]
         for f in range(6):
             trades = []
             for p in inst_mod.session_params(inst, f):
                 dctx = fp.daily_context(daily, p) if daily is not None else None
                 trades += fp.run_backtest(prep, dctx, p)
             s = fp.stats(trades, CAPITAL)
-            lines.append(f"| {f} {NAMES[f]} | {s['trades']} | {s.get('win_rate', '')} | {s.get('net', '')} | {s.get('max_dd', '')} | {s.get('profit_factor', '')} |")
+            lines.append(f"| {f} {NAMES[f]} | {s['trades']} | {s.get('win_rate', '')} | {s.get('net', '')} | {s.get('avg_r', '')} | {s.get('max_dd', '')} | {s.get('profit_factor', '')} |")
         lines.append("")
         if inst.kind == "perp":   # are costs eating the edge? same trades with zero fees and slippage
             free = []
@@ -163,20 +168,20 @@ def run_backtest(root=".", bars_fn=None, daily_fn=None):
         # Stop-width cap test (no filter): does skipping wide-stop days explain the futures results?
         caps = [("$150 cap (as now)", 150.0), ("no cap", 0.0)] if inst.kind == "future" else \
                [("no cap", 0.0), ("40 bps", 40.0), ("30 bps", 30.0), ("25 bps", 25.0), ("20 bps", 20.0)]
-        lines += ["Stop-width cap test (no filter):", "", "| Cap | Trades | Win % | Net $ | Profit factor |", "|---|---|---|---|---|"]
+        lines += ["Stop-width cap test (no filter):", "", "| Cap | Trades | Win % | Net $ | Avg R | Profit factor |", "|---|---|---|---|---|---|"]
         for label, cap in caps:
             tr = []
             for p in inst_mod.session_params(inst, 0):
                 q = replace(p, max_risk_usd=cap) if inst.kind == "future" else replace(p, max_stop_bps=cap)
                 tr += fp.run_backtest(prep, None, q)
             s_ = fp.stats(tr, CAPITAL)
-            lines.append(f"| {label} | {s_['trades']} | {s_.get('win_rate', '')} | {s_.get('net', '')} | {s_.get('profit_factor', '')} |")
+            lines.append(f"| {label} | {s_['trades']} | {s_.get('win_rate', '')} | {s_.get('net', '')} | {s_.get('avg_r', '')} | {s_.get('profit_factor', '')} |")
         lines.append("")
         if inst.kind == "perp":   # which session works best (no filter)?
-            lines += ["Per session, no filter:", "", "| Session | Trades | Win % | Net $ | Profit factor |", "|---|---|---|---|---|"]
+            lines += ["Per session, no filter:", "", "| Session | Trades | Win % | Net $ | Avg R | Profit factor |", "|---|---|---|---|---|---|"]
             for p in inst_mod.session_params(inst, 0):
                 s = fp.stats(fp.run_backtest(prep, None, p), CAPITAL)
-                lines.append(f"| {p.session} | {s['trades']} | {s.get('win_rate', '')} | {s.get('net', '')} | {s.get('profit_factor', '')} |")
+                lines.append(f"| {p.session} | {s['trades']} | {s.get('win_rate', '')} | {s.get('net', '')} | {s.get('avg_r', '')} | {s.get('profit_factor', '')} |")
             lines.append("")
     write_if_changed(os.path.join(root, "BACKTEST.md"), "\n".join(lines))
     print("\n".join(lines))
