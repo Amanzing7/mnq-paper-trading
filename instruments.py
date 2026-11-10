@@ -63,7 +63,8 @@ def params_for(inst: Instrument, fmode: int) -> fp.Params:
     if inst.kind == "perp":
         return fp.Params(fmode=fmode, kind="perp", symbol=inst.symbol, pv=1.0,
                          slip_bps=float(env("PERP_SLIP_BPS") or inst.slip_bps), fee_bps=float(env("PERP_FEE_BPS") or inst.fee_bps),
-                         risk_usd=float(env("RISK_USD") or 20.0), max_notional=float(env("MAX_NOTIONAL") or 3000.0))
+                         risk_usd=float(env("RISK_USD") or 20.0), max_notional=float(env("MAX_NOTIONAL") or 3000.0),
+                         max_stop_bps=float(env("MAX_STOP_BPS") or 0.0))
     return fp.Params(fmode=fmode, kind="future", symbol=inst.symbol, tick=inst.tick, pv=inst.pv, qty=1,
                      max_risk_usd=float(env("MAX_RISK") or 150.0))
 
