@@ -177,9 +177,18 @@ def run_backtest(root=".", bars_fn=None, daily_fn=None):
             s_ = fp.stats(tr, CAPITAL)
             lines.append(f"| {label} | {s_['trades']} | {s_.get('win_rate', '')} | {s_.get('net', '')} | {s_.get('avg_r', '')} | {s_.get('profit_factor', '')} |")
         lines.append("")
-        if inst.kind == "perp":   # which session works best (no filter)?
-            lines += ["Per session, no filter:", "", "| Session | Trades | Win % | Net $ | Avg R | Profit factor |", "|---|---|---|---|---|---|"]
+        # Minimum stop-width test (no filter): do narrow-range days, where fixed costs eat the target, drag the result down?
+        lines += ["Minimum stop-width test (no filter):", "", "| Skip stops narrower than | Trades | Win % | Net $ | Avg R | Profit factor |", "|---|---|---|---|---|---|"]
+        for mn in (0.0, 10.0, 15.0, 20.0, 30.0):
+            tr = []
             for p in inst_mod.session_params(inst, 0):
+                tr += fp.run_backtest(prep, None, replace(p, min_stop_bps=mn))
+            s_ = fp.stats(tr, CAPITAL)
+            lines.append(f"| {'nothing' if not mn else f'{mn:.0f} bps'} | {s_['trades']} | {s_.get('win_rate', '')} | {s_.get('net', '')} | {s_.get('avg_r', '')} | {s_.get('profit_factor', '')} |")
+        lines.append("")
+        if True:   # which session works best (no filter)? Futures are tested in every session too, for comparison
+            lines += ["Per session, no filter:", "", "| Session | Trades | Win % | Net $ | Avg R | Profit factor |", "|---|---|---|---|---|---|"]
+            for p in inst_mod.session_params(inst, 0, all_sessions=True):
                 s = fp.stats(fp.run_backtest(prep, None, p), CAPITAL)
                 lines.append(f"| {p.session} | {s['trades']} | {s.get('win_rate', '')} | {s.get('net', '')} | {s.get('avg_r', '')} | {s.get('profit_factor', '')} |")
             lines.append("")
