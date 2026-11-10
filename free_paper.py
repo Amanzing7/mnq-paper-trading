@@ -38,6 +38,7 @@ class Params:
     comm_side: float = 0.75
     max_risk_usd: float = 150.0  # skip trades whose stop risk is bigger (0 = off)
     futures_hours: bool = True   # perps: skip bars when the underlying futures market is closed (Fri 17:00 ET - Sun 18:00 ET, 17:00-18:00 daily)
+    min_stop_bps: float = 0.0    # skip trades whose stop is narrower than this many bps of price (0 = off)
     max_stop_bps: float = 0.0    # skip trades whose stop is wider than this many bps of price (0 = off)
     tick: float = 0.25
     pv: float = 2.0              # $ per point, MNQ
@@ -164,6 +165,8 @@ def simulate_day(bars: pd.DataFrame, day, dctx: pd.DataFrame | None, p: Params) 
         tgt = entry_sig + p.rr * risk if side == "long" else entry_sig - p.rr * risk
         qty = p.qty
         if p.max_stop_bps and risk / entry_sig * 1e4 > p.max_stop_bps:
+            return None
+        if p.min_stop_bps and risk / entry_sig * 1e4 < p.min_stop_bps:
             return None
         if p.kind == "perp":
             if risk <= 0:
