@@ -93,6 +93,14 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 | 4 Globex VWAP | 50 | 60.0 | -5.85 | 36.73 | 0.95 |
 | 5 volume | 21 | 42.9 | -24.95 | 50.07 | 0.65 |
 
+Cost check (no filter): same trades with zero fees and zero slippage:
+
+| Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|
+| 67 | 70.1 | 39.88 | 1.31 |
+
+Average stop distance 33.5 bps of price (target is half of that). Assumed round-trip cost about 6.0 bps.
+
 Per session, no filter:
 
 | Session | Trades | Win % | Net $ | Profit factor |
@@ -114,6 +122,14 @@ Per session, no filter:
 | 3 60m ADX | 50 | 32.0 | -71.41 | 73.83 | 0.27 |
 | 4 Globex VWAP | 45 | 42.2 | -31.09 | 42.47 | 0.64 |
 | 5 volume | 25 | 36.0 | -29.29 | 44.59 | 0.54 |
+
+Cost check (no filter): same trades with zero fees and zero slippage:
+
+| Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|
+| 67 | 71.6 | 35.96 | 1.53 |
+
+Average stop distance 18.9 bps of price (target is half of that). Assumed round-trip cost about 6.0 bps.
 
 Per session, no filter:
 
@@ -137,6 +153,14 @@ Per session, no filter:
 | 4 Globex VWAP | 42 | 40.5 | -35.44 | 37.09 | 0.6 |
 | 5 volume | 29 | 48.3 | -32.92 | 39.16 | 0.55 |
 
+Cost check (no filter): same trades with zero fees and zero slippage:
+
+| Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|
+| 66 | 65.2 | 28.41 | 1.28 |
+
+Average stop distance 23.9 bps of price (target is half of that). Assumed round-trip cost about 6.0 bps.
+
 Per session, no filter:
 
 | Session | Trades | Win % | Net $ | Profit factor |
@@ -152,12 +176,20 @@ Per session, no filter:
 
 | Filter | Trades | Win % | Net $ | Max drawdown $ | Profit factor |
 |---|---|---|---|---|---|
-| 0 none | 67 | 58.2 | -84.65 | 112.79 | 0.68 |
-| 1 daily EMA | 40 | 55.0 | -76.5 | 77.82 | 0.57 |
-| 2 range/ATR | 44 | 68.2 | -32.67 | 61.33 | 0.83 |
-| 3 60m ADX | 44 | 65.9 | -23.21 | 66.05 | 0.87 |
-| 4 Globex VWAP | 53 | 58.5 | -83.88 | 92.7 | 0.64 |
+| 0 none | 68 | 58.8 | -77.98 | 106.12 | 0.71 |
+| 1 daily EMA | 41 | 56.1 | -69.83 | 71.15 | 0.61 |
+| 2 range/ATR | 45 | 68.9 | -26.0 | 61.33 | 0.86 |
+| 3 60m ADX | 45 | 66.7 | -16.54 | 66.05 | 0.91 |
+| 4 Globex VWAP | 54 | 59.3 | -77.21 | 86.02 | 0.67 |
 | 5 volume | 14 | 57.1 | -18.54 | 46.87 | 0.69 |
+
+Cost check (no filter): same trades with zero fees and zero slippage:
+
+| Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|
+| 68 | 60.3 | 17.16 | 1.08 |
+
+Average stop distance 40.8 bps of price (target is half of that). Assumed round-trip cost about 6.0 bps.
 
 Per session, no filter:
 
@@ -165,7 +197,7 @@ Per session, no filter:
 |---|---|---|---|---|
 | Asia | 17 | 58.8 | -28.55 | 0.55 |
 | Original | 17 | 52.9 | -36.91 | 0.47 |
-| London | 16 | 68.8 | 24.91 | 1.7 |
+| London | 17 | 70.6 | 31.58 | 1.89 |
 | NY | 17 | 52.9 | -44.1 | 0.55 |
 
 ## BRENTOIL: BRENTOIL-USDC (Brent crude perp)
@@ -174,12 +206,20 @@ Per session, no filter:
 
 | Filter | Trades | Win % | Net $ | Max drawdown $ | Profit factor |
 |---|---|---|---|---|---|
-| 0 none | 67 | 56.7 | -73.27 | 96.5 | 0.71 |
-| 1 daily EMA | 44 | 54.5 | -79.36 | 88.0 | 0.59 |
-| 2 range/ATR | 43 | 65.1 | -35.41 | 66.32 | 0.81 |
-| 3 60m ADX | 41 | 65.9 | -12.12 | 57.75 | 0.92 |
-| 4 Globex VWAP | 50 | 58.0 | -71.56 | 80.07 | 0.65 |
-| 5 volume | 18 | 61.1 | -15.16 | 37.28 | 0.78 |
+| 0 none | 68 | 57.4 | -67.25 | 90.48 | 0.73 |
+| 1 daily EMA | 45 | 55.6 | -73.34 | 81.98 | 0.62 |
+| 2 range/ATR | 44 | 65.9 | -29.39 | 60.3 | 0.85 |
+| 3 60m ADX | 42 | 66.7 | -6.11 | 57.75 | 0.96 |
+| 4 Globex VWAP | 51 | 58.8 | -65.54 | 74.05 | 0.68 |
+| 5 volume | 19 | 63.2 | -9.14 | 31.27 | 0.87 |
+
+Cost check (no filter): same trades with zero fees and zero slippage:
+
+| Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|
+| 68 | 60.3 | 27.3 | 1.13 |
+
+Average stop distance 40.0 bps of price (target is half of that). Assumed round-trip cost about 6.0 bps.
 
 Per session, no filter:
 
@@ -187,5 +227,5 @@ Per session, no filter:
 |---|---|---|---|---|
 | Asia | 17 | 58.8 | -9.67 | 0.81 |
 | Original | 17 | 52.9 | -43.01 | 0.41 |
-| London | 16 | 68.8 | 3.86 | 1.07 |
+| London | 17 | 70.6 | 9.88 | 1.19 |
 | NY | 17 | 47.1 | -24.45 | 0.68 |
