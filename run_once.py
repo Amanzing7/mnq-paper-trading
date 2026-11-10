@@ -160,6 +160,18 @@ def run_backtest(root=".", bars_fn=None, daily_fn=None):
                       f"| {sf['trades']} | {sf.get('win_rate', '')} | {sf.get('net', '')} | {sf.get('profit_factor', '')} |", "",
                       f"Average stop distance {np.nanmean(dist):.1f} bps of price (target is half of that). "
                       f"Assumed round-trip cost about {2 * (p0.slip_bps + p0.fee_bps):.1f} bps.", ""]
+        # Stop-width cap test (no filter): does skipping wide-stop days explain the futures results?
+        caps = [("$150 cap (as now)", 150.0), ("no cap", 0.0)] if inst.kind == "future" else \
+               [("no cap", 0.0), ("40 bps", 40.0), ("30 bps", 30.0), ("25 bps", 25.0), ("20 bps", 20.0)]
+        lines += ["Stop-width cap test (no filter):", "", "| Cap | Trades | Win % | Net $ | Profit factor |", "|---|---|---|---|---|"]
+        for label, cap in caps:
+            tr = []
+            for p in inst_mod.session_params(inst, 0):
+                q = replace(p, max_risk_usd=cap) if inst.kind == "future" else replace(p, max_stop_bps=cap)
+                tr += fp.run_backtest(prep, None, q)
+            s_ = fp.stats(tr, CAPITAL)
+            lines.append(f"| {label} | {s_['trades']} | {s_.get('win_rate', '')} | {s_.get('net', '')} | {s_.get('profit_factor', '')} |")
+        lines.append("")
         if inst.kind == "perp":   # which session works best (no filter)?
             lines += ["Per session, no filter:", "", "| Session | Trades | Win % | Net $ | Profit factor |", "|---|---|---|---|---|"]
             for p in inst_mod.session_params(inst, 0):
