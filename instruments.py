@@ -28,6 +28,7 @@ INSTRUMENTS = [
     Instrument("MGC", "future", "Micro gold", yahoo=("MGC=F", "GC=F"), tick=0.1, pv=10.0),
     Instrument("XYZ100", "perp", "XYZ100-USDC (Nasdaq-100 perp)", hl_coins=("xyz:XYZ100",)),
     Instrument("SP500", "perp", "SP500-USDC (S&P 500 perp)", hl_coins=("xyz:SP500",)),
+    Instrument("GOLD", "perp", "GOLD-USDC (gold perp)", hl_coins=("xyz:GOLD", "xyz:XAU")),
     Instrument("WTIOIL", "perp", "WTIOIL-USDC (WTI crude perp)", hl_coins=("xyz:WTIOIL", "xyz:CL")),
     Instrument("BRENTOIL", "perp", "BRENTOIL-USDC (Brent crude perp)", hl_coins=("xyz:BRENTOIL",)),
 ]
