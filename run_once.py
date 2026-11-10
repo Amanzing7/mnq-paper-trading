@@ -10,7 +10,11 @@ import csv
 import glob
 import os
 import sys
+from dataclasses import replace
 from datetime import datetime, timedelta
+
+import numpy as np
+import pandas as pd
 
 import free_paper as fp
 import datasources as ds
@@ -123,11 +127,15 @@ def run_backtest(root=".", bars_fn=None, daily_fn=None):
         except Exception as e:
             lines += [f"Data failed: {e}", ""]
             continue
+        daily_err = None
         try:
             daily = daily_fn(inst)
-        except Exception:
-            daily = None
-        lines += [f"{df5.index[0].date()} to {df5.index[-1].date()}", "",
+        except Exception as e:
+            daily, daily_err = None, e
+        lines += [f"{df5.index[0].date()} to {df5.index[-1].date()}", ""]
+        if daily_err:
+            lines += [f"**Daily data failed, so filters 1 and 2 could not run:** {daily_err}", ""]
+        lines += [
                   "| Filter | Trades | Win % | Net $ | Max drawdown $ | Profit factor |", "|---|---|---|---|---|---|"]
         for f in range(6):
             trades = []
@@ -137,6 +145,21 @@ def run_backtest(root=".", bars_fn=None, daily_fn=None):
             s = fp.stats(trades, CAPITAL)
             lines.append(f"| {f} {NAMES[f]} | {s['trades']} | {s.get('win_rate', '')} | {s.get('net', '')} | {s.get('max_dd', '')} | {s.get('profit_factor', '')} |")
         lines.append("")
+        if inst.kind == "perp":   # are costs eating the edge? same trades with zero fees and slippage
+            free = []
+            for p in inst_mod.session_params(inst, 0):
+                free += fp.run_backtest(prep, None, replace(p, slip_bps=0.0, fee_bps=0.0))
+            sf = fp.stats(free, CAPITAL)
+            base_tr = []
+            for p in inst_mod.session_params(inst, 0):
+                base_tr += fp.run_backtest(prep, None, p)
+            dist = [abs(t["entry"] - t["stop"]) / t["entry"] * 1e4 for t in base_tr] or [float("nan")]
+            p0 = inst_mod.params_for(inst, 0)
+            lines += ["Cost check (no filter): same trades with zero fees and zero slippage:", "",
+                      "| Trades | Win % | Net $ | Profit factor |", "|---|---|---|---|",
+                      f"| {sf['trades']} | {sf.get('win_rate', '')} | {sf.get('net', '')} | {sf.get('profit_factor', '')} |", "",
+                      f"Average stop distance {np.nanmean(dist):.1f} bps of price (target is half of that). "
+                      f"Assumed round-trip cost about {2 * (p0.slip_bps + p0.fee_bps):.1f} bps.", ""]
         if inst.kind == "perp":   # which session works best (no filter)?
             lines += ["Per session, no filter:", "", "| Session | Trades | Win % | Net $ | Profit factor |", "|---|---|---|---|---|"]
             for p in inst_mod.session_params(inst, 0):
@@ -147,5 +170,57 @@ def run_backtest(root=".", bars_fn=None, daily_fn=None):
     print("\n".join(lines))
 
 
+# ───────────── data check: are the Hyperliquid candles sane? ─────────────
+CHECK_PAIRS = [("XYZ100", "MNQ"), ("SP500", "MES"), ("WTIOIL", "MCL"), ("GOLD", "MGC")]
+
+
+def _best_shift(perp: pd.DataFrame, fut: pd.DataFrame) -> dict:
+    """Correlation of 5-minute returns when the perp's timestamps are shifted by k hours (0 = clocks agree)."""
+    rf = fut["Close"].pct_change().rename("f")
+    out = {}
+    for k in range(-3, 4):
+        rp = perp["Close"].pct_change().rename("p")
+        rp.index = rp.index + pd.Timedelta(hours=k)
+        j = pd.concat([rp, rf], axis=1, join="inner").replace([np.inf, -np.inf], np.nan).dropna()
+        out[k] = float(j["p"].corr(j["f"])) if len(j) > 50 else float("nan")
+    return out
+
+
+def _top_hours(df: pd.DataFrame, n=3) -> str:
+    v = df["Volume"].groupby(df.index.hour).mean().sort_values(ascending=False).head(n)
+    return ", ".join(f"{h:02d}:00" for h in v.index)
+
+
+def run_check(root=".", bars_fn=None):
+    bars_fn = bars_fn or (lambda i: ds.fetch_bars(i, 15))
+    lines = ["# Data check: do the perp candles line up with the futures?", "",
+             "If the perp's clock is right, the best time shift is 0 and 5-minute returns are highly correlated with the matching futures "
+             "(over 0.5 on US index pairs). A best shift other than 0 means perp timestamps are off and every session would be wrong.", "",
+             "| Perp | Futures | Overlapping bars | Median price ratio (perp / futures) | Best shift (hours) | Correlation at 0 | Correlation at best | Busiest hours, perp (NY) | Busiest hours, futures (NY) |",
+             "|---|---|---|---|---|---|---|---|---|"]
+    notes = []
+    for ps, fs in CHECK_PAIRS:
+        try:
+            pb, fb = bars_fn(inst_mod.BY_SYMBOL[ps]), bars_fn(inst_mod.BY_SYMBOL[fs])
+            both = pd.concat([pb["Close"].rename("p"), fb["Close"].rename("f")], axis=1, join="inner").dropna()
+            ratio = float((both["p"] / both["f"]).median()) if len(both) else float("nan")
+            sh = _best_shift(pb, fb)
+            best = max((k for k in sh if not np.isnan(sh[k])), key=lambda k: sh[k], default=None)
+            lines.append(f"| {ps} | {fs} | {len(both)} | {ratio:.4f} | {best} | {sh.get(0, float('nan')):.2f} | "
+                         f"{(sh[best] if best is not None else float('nan')):.2f} | {_top_hours(pb)} | {_top_hours(fb)} |")
+            if best not in (None, 0):
+                notes.append(f"- **{ps}**: timestamps look shifted by {best} hour(s). Tell Claude and it will be corrected.")
+        except Exception as e:
+            lines.append(f"| {ps} | {fs} | failed: {e} | | | | | | |")
+    lines += [""] + (notes or ["No timestamp shift detected where data was available."]) + [""]
+    write_if_changed(os.path.join(root, "DATACHECK.md"), "\n".join(lines))
+    print("\n".join(lines))
+
+
 if __name__ == "__main__":
-    run_backtest() if "--backtest" in sys.argv else run_live()
+    if "--check" in sys.argv:
+        run_check()
+    elif "--backtest" in sys.argv:
+        run_backtest()
+    else:
+        run_live()
