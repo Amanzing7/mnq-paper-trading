@@ -8,12 +8,12 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 
 | Filter | Trades | Win % | Net $ | Max drawdown $ | Profit factor |
 |---|---|---|---|---|---|
-| 0 none | 46 | 71.7 | 199.5 | 223.25 | 1.17 |
-| 1 daily EMA | 23 | 73.9 | 61.5 | 312.0 | 1.11 |
-| 2 range/ATR | 38 | 78.9 | 417.75 | 170.75 | 1.47 |
-| 3 60m ADX | 28 | 67.9 | -81.5 | 252.25 | 0.9 |
-| 4 Globex VWAP | 33 | 69.7 | 72.25 | 245.75 | 1.08 |
-| 5 volume | 15 | 53.3 | -258.25 | 396.5 | 0.59 |
+| 0 none | 46 | 73.9 | 341.25 | 170.75 | 1.32 |
+| 1 daily EMA | 23 | 78.3 | 205.25 | 268.25 | 1.42 |
+| 2 range/ATR | 38 | 81.6 | 559.5 | 170.75 | 1.7 |
+| 3 60m ADX | 28 | 67.9 | -92.0 | 254.0 | 0.89 |
+| 4 Globex VWAP | 33 | 72.7 | 215.5 | 254.5 | 1.28 |
+| 5 volume | 15 | 53.3 | -270.75 | 408.75 | 0.58 |
 
 ## MES: Micro S&P 500
 
@@ -21,12 +21,12 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 
 | Filter | Trades | Win % | Net $ | Max drawdown $ | Profit factor |
 |---|---|---|---|---|---|
-| 0 none | 50 | 74.0 | -76.88 | 132.0 | 0.85 |
-| 1 daily EMA | 22 | 68.2 | -60.5 | 103.12 | 0.71 |
-| 2 range/ATR | 34 | 70.6 | -85.38 | 118.75 | 0.8 |
-| 3 60m ADX | 36 | 75.0 | -34.0 | 127.62 | 0.9 |
-| 4 Globex VWAP | 36 | 66.7 | -176.5 | 203.5 | 0.61 |
-| 5 volume | 16 | 56.2 | -172.12 | 201.0 | 0.42 |
+| 0 none | 50 | 72.0 | -117.5 | 153.62 | 0.78 |
+| 1 daily EMA | 22 | 68.2 | -63.62 | 103.75 | 0.7 |
+| 2 range/ATR | 34 | 70.6 | -88.5 | 118.12 | 0.8 |
+| 3 60m ADX | 36 | 75.0 | -32.75 | 127.0 | 0.91 |
+| 4 Globex VWAP | 36 | 63.9 | -216.5 | 240.38 | 0.56 |
+| 5 volume | 16 | 56.2 | -170.25 | 199.12 | 0.42 |
 
 ## MYM: Micro Dow
 
@@ -34,12 +34,12 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 
 | Filter | Trades | Win % | Net $ | Max drawdown $ | Profit factor |
 |---|---|---|---|---|---|
-| 0 none | 50 | 70.0 | -123.25 | 197.5 | 0.65 |
-| 1 daily EMA | 27 | 63.0 | -101.25 | 165.0 | 0.52 |
+| 0 none | 50 | 70.0 | -122.25 | 197.5 | 0.65 |
+| 1 daily EMA | 27 | 63.0 | -100.25 | 165.0 | 0.53 |
 | 2 range/ATR | 26 | 46.2 | -190.0 | 238.75 | 0.43 |
 | 3 60m ADX | 27 | 70.4 | -49.0 | 90.75 | 0.75 |
-| 4 Globex VWAP | 34 | 70.6 | -66.75 | 138.0 | 0.7 |
-| 5 volume | 20 | 85.0 | 50.25 | 58.5 | 1.63 |
+| 4 Globex VWAP | 34 | 70.6 | -65.75 | 138.0 | 0.71 |
+| 5 volume | 19 | 89.5 | 66.75 | 58.5 | 2.14 |
 
 ## M2K: Micro Russell 2000
 
@@ -47,12 +47,12 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 
 | Filter | Trades | Win % | Net $ | Max drawdown $ | Profit factor |
 |---|---|---|---|---|---|
-| 0 none | 50 | 60.0 | -163.0 | 168.5 | 0.46 |
-| 1 daily EMA | 28 | 57.1 | -95.75 | 95.75 | 0.48 |
-| 2 range/ATR | 30 | 56.7 | -129.75 | 140.0 | 0.46 |
-| 3 60m ADX | 33 | 60.6 | -88.75 | 92.25 | 0.53 |
-| 4 Globex VWAP | 27 | 63.0 | -87.25 | 89.25 | 0.49 |
-| 5 volume | 17 | 70.6 | -14.75 | 29.5 | 0.8 |
+| 0 none | 50 | 64.0 | -145.0 | 150.75 | 0.5 |
+| 1 daily EMA | 28 | 64.3 | -78.5 | 78.5 | 0.54 |
+| 2 range/ATR | 30 | 56.7 | -129.5 | 140.0 | 0.46 |
+| 3 60m ADX | 33 | 66.7 | -70.75 | 74.5 | 0.59 |
+| 4 Globex VWAP | 27 | 63.0 | -86.75 | 88.75 | 0.49 |
+| 5 volume | 16 | 75.0 | -16.25 | 30.25 | 0.78 |
 
 ## MCL: Micro WTI crude
 
@@ -60,12 +60,12 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 
 | Filter | Trades | Win % | Net $ | Max drawdown $ | Profit factor |
 |---|---|---|---|---|---|
-| 0 none | 50 | 66.0 | -173.0 | 242.5 | 0.72 |
+| 0 none | 50 | 64.0 | -195.0 | 257.0 | 0.69 |
 | 1 daily EMA | 0 |  |  |  |  |
 | 2 range/ATR | 0 |  |  |  |  |
-| 3 60m ADX | 27 | 63.0 | -129.5 | 233.5 | 0.67 |
-| 4 Globex VWAP | 33 | 66.7 | -71.0 | 156.0 | 0.81 |
-| 5 volume | 25 | 68.0 | -27.0 | 98.5 | 0.91 |
+| 3 60m ADX | 28 | 64.3 | -115.5 | 220.0 | 0.7 |
+| 4 Globex VWAP | 33 | 63.6 | -93.0 | 156.0 | 0.76 |
+| 5 volume | 25 | 68.0 | -21.0 | 112.0 | 0.93 |
 
 ## MGC: Micro gold
 
@@ -73,12 +73,12 @@ Each filter row is its own $1,000 account. Futures use ~60 days of Yahoo data; H
 
 | Filter | Trades | Win % | Net $ | Max drawdown $ | Profit factor |
 |---|---|---|---|---|---|
-| 0 none | 47 | 72.3 | 220.49 | 478.01 | 1.2 |
-| 1 daily EMA | 30 | 80.0 | 360.99 | 276.51 | 1.68 |
-| 2 range/ATR | 46 | 71.7 | 201.49 | 497.01 | 1.18 |
-| 3 60m ADX | 28 | 78.6 | 341.99 | 304.51 | 1.61 |
-| 4 Globex VWAP | 24 | 79.2 | 316.99 | 308.51 | 1.74 |
-| 5 volume | 15 | 66.7 | -57.01 | 316.01 | 0.89 |
+| 0 none | 47 | 72.3 | 212.99 | 472.01 | 1.19 |
+| 1 daily EMA | 30 | 80.0 | 351.5 | 273.5 | 1.65 |
+| 2 range/ATR | 47 | 72.3 | 212.99 | 472.01 | 1.19 |
+| 3 60m ADX | 28 | 78.6 | 331.49 | 304.51 | 1.58 |
+| 4 Globex VWAP | 26 | 73.1 | 171.5 | 308.51 | 1.3 |
+| 5 volume | 15 | 66.7 | -68.01 | 315.51 | 0.87 |
 
 ## XYZ100: XYZ100-USDC (Nasdaq-100 perp)
 
@@ -111,7 +111,7 @@ Per session, no filter:
 | 0 none | 67 | 35.8 | -54.49 | 65.88 | 0.53 |
 | 1 daily EMA | 27 | 25.9 | -24.18 | 37.55 | 0.46 |
 | 2 range/ATR | 37 | 48.6 | -30.54 | 37.64 | 0.46 |
-| 3 60m ADX | 49 | 32.7 | -71.27 | 73.69 | 0.27 |
+| 3 60m ADX | 50 | 32.0 | -71.41 | 73.83 | 0.27 |
 | 4 Globex VWAP | 45 | 42.2 | -31.09 | 42.47 | 0.64 |
 | 5 volume | 25 | 36.0 | -29.29 | 44.59 | 0.54 |
 
@@ -123,6 +123,28 @@ Per session, no filter:
 | Original | 17 | 23.5 | -27.1 | 0.07 |
 | London | 16 | 43.8 | -12.21 | 0.48 |
 | NY | 17 | 35.3 | -13.91 | 0.68 |
+
+## GOLD: GOLD-USDC (gold perp)
+
+2026-10-24 to 2026-11-10
+
+| Filter | Trades | Win % | Net $ | Max drawdown $ | Profit factor |
+|---|---|---|---|---|---|
+| 0 none | 66 | 45.5 | -64.02 | 69.13 | 0.57 |
+| 1 daily EMA | 33 | 45.5 | -31.06 | 38.83 | 0.53 |
+| 2 range/ATR | 40 | 62.5 | -10.04 | 38.61 | 0.85 |
+| 3 60m ADX | 51 | 47.1 | -55.81 | 63.81 | 0.55 |
+| 4 Globex VWAP | 42 | 40.5 | -35.44 | 37.09 | 0.6 |
+| 5 volume | 29 | 48.3 | -32.92 | 39.16 | 0.55 |
+
+Per session, no filter:
+
+| Session | Trades | Win % | Net $ | Profit factor |
+|---|---|---|---|---|
+| Asia | 17 | 41.2 | -23.64 | 0.45 |
+| Original | 17 | 52.9 | 3.05 | 1.17 |
+| London | 16 | 31.2 | -37.2 | 0.2 |
+| NY | 16 | 56.2 | -6.23 | 0.84 |
 
 ## WTIOIL: WTIOIL-USDC (WTI crude perp)
 
