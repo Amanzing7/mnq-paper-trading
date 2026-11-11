@@ -1,3 +1,4 @@
 date,session,symbol,qty,side,entry_time,entry,stop,target,range_high,range_low,status,exit,reason,pnl
 2026-11-09,Original,MYM,1,long,2026-11-09 01:20:00-05:00,51733.0,51669.0,51763.5,51722.0,51669.0,closed,51668.0,stop,-34.0
 2026-11-10,Original,MYM,1,long,2026-11-10 01:15:00-05:00,52731.0,52690.0,52750.0,52729.0,52690.0,closed,52750.0,target,8.0
+2026-11-11,Original,MYM,1,long,2026-11-11 01:25:00-05:00,52415.0,52380.0,52431.0,52405.0,52380.0,closed,52431.0,target,6.5

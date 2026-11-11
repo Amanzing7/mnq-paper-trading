@@ -1,3 +1,4 @@
 date,session,symbol,qty,side,entry_time,entry,stop,target,range_high,range_low,status,exit,reason,pnl
 2026-11-09,Original,MNQ,1,short,2026-11-09 01:30:00-05:00,27062.0,27134.25,27026.25,27134.25,27088.5,closed,27026.25,target,70.0
-2026-11-10,Original,MNQ,1,short,2026-11-10 01:35:00-05:00,27977.0,28037.0,27947.375,28037.0,27982.0,closed,27947.375,target,57.75
+2026-11-10,Original,MNQ,1,short,2026-11-10 01:35:00-05:00,27977.75,28037.0,27948.5,28037.0,27982.0,closed,27948.5,target,57.0
+2026-11-11,Original,MNQ,1,long,2026-11-11 01:15:00-05:00,28256.0,28220.0,28273.625,28253.5,28220.0,closed,28273.625,target,33.75
