@@ -1,2 +1,3 @@
 date,session,symbol,qty,side,entry_time,entry,stop,target,range_high,range_low,status,exit,reason,pnl
 2026-11-09,Original,MES,1,long,2026-11-09 01:20:00-05:00,7434.75,7422.5,7440.5,7430.5,7422.5,closed,7422.25,stop,-64.0
+2026-11-12,Original,MES,1,long,2026-11-12 01:20:00-05:00,7611.75,7603.0,7615.75,7610.75,7603.0,closed,7602.75,stop,-46.5
