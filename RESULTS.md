@@ -16,7 +16,7 @@ Each row is a separate fake $1,000 account. Same rules on every market; 0.5R tar
 | MCL | 2 range/ATR | 3 | 3 | 85.50 | 1,085.50 | Original: long 86.64, stop 85.61, target 87.14: closed (target) $48.50 |
 | MGC | 0 none | 4 | 3 | 63.00 | 1,063.00 | Original: short 3978, stop 3987, target 3974: closed (target) $38.00 |
 | MGC | 2 range/ATR | 4 | 3 | 63.00 | 1,063.00 | Original: short 3978, stop 3987, target 3974: closed (target) $38.00 |
-| XYZ100 | 0 none | 14 | 11 | 15.13 | 1,015.13 | Original: long 2.812e+04, stop 2.803e+04, target 2.816e+04: closed (target) $3.29; London: short 2.809e+04, stop 2.814e+04, target 2.807e+04: closed (stop) $-6.65; NY: long 2.835e+04, stop 2.793e+04, target 2.854e+04: open |
+| XYZ100 | 0 none | 15 | 12 | 16.29 | 1,016.29 | Original: long 2.812e+04, stop 2.803e+04, target 2.816e+04: closed (target) $3.29; London: short 2.809e+04, stop 2.814e+04, target 2.807e+04: closed (stop) $-6.65; NY: long 2.835e+04, stop 2.793e+04, target 2.854e+04: closed (time) $1.16 |
 | XYZ100 | 2 range/ATR | 9 | 8 | 15.66 | 1,015.66 | Original: long 2.812e+04, stop 2.803e+04, target 2.816e+04: closed (target) $3.29; London: short 2.809e+04, stop 2.814e+04, target 2.807e+04: closed (stop) $-6.65 |
 | SP500 | 0 none | 15 | 9 | -22.40 | 977.60 | Original: long 7588, stop 7578, target 7590: closed (stop) $-5.14; London: short 7577, stop 7586, target 7574: closed (stop) $-4.91; NY: long 7603, stop 7557, target 7624: closed (target) $7.64 |
 | SP500 | 2 range/ATR | 11 | 7 | -19.66 | 980.34 | Original: long 7588, stop 7578, target 7590: closed (stop) $-5.14; London: short 7577, stop 7586, target 7574: closed (stop) $-4.91 |
@@ -37,7 +37,7 @@ Each row is a separate fake $1,000 account. Same rules on every market; 0.5R tar
 | LT_BRENT | 0 none | 15 | 14 | 76.82 | 1,076.82 | Original: long 91.12, stop 90.03, target 91.62: closed (target) $9.48; London: long 91.67, stop 91.29, target 91.81: closed (target) $4.83; NY: long 91.73, stop 91.18, target 91.96: closed (target) $7.61 |
 | LT_BRENT | 2 range/ATR | 12 | 12 | 77.79 | 1,077.79 | Original: long 91.12, stop 90.03, target 91.62: closed (target) $9.48; London: long 91.67, stop 91.29, target 91.81: closed (target) $4.83; NY: long 91.73, stop 91.18, target 91.96: closed (target) $7.61 |
 
-**Total P/L across all accounts: $764.02**
+**Total P/L across all accounts: $765.18**
 
 ## Recent trades
 
@@ -84,7 +84,7 @@ Each row is a separate fake $1,000 account. Same rules on every market; 0.5R tar
 | 2026-11-12 | MCL | 2 | Original | long | 1 | 86.64 | 85.61 | 87.14 | 87.14 | target | 48.50 |
 | 2026-11-12 | XYZ100 | 0 | Original | long | 0.1067 | 2.812e+04 | 2.803e+04 | 2.816e+04 | 2.816e+04 | target | 3.29 |
 | 2026-11-12 | XYZ100 | 0 | London | short | 0.1067 | 2.809e+04 | 2.814e+04 | 2.807e+04 | 2.815e+04 | stop | -6.65 |
-| 2026-11-12 | XYZ100 | 0 | NY | long | 0.0491 | 2.835e+04 | 2.793e+04 | 2.854e+04 | open | open |  |
+| 2026-11-12 | XYZ100 | 0 | NY | long | 0.0491 | 2.835e+04 | 2.793e+04 | 2.854e+04 | 2.837e+04 | time | 1.16 |
 | 2026-11-12 | MES | 2 | Original | long | 1 | 7612 | 7603 | 7616 | 7603 | stop | -46.50 |
 | 2026-11-12 | LT_US500 | 0 | Original | long | 0.3954 | 7589 | 7579 | 7591 | 7577 | stop | -4.88 |
 | 2026-11-12 | LT_US500 | 0 | London | short | 0.3956 | 7580 | 7587 | 7580 | 7580 | target | -0.09 |
