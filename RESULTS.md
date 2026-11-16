@@ -16,33 +16,53 @@ Each row is a separate fake $1,000 account. Same rules on every market; 0.5R tar
 | MCL | 2 range/ATR | 4 | 4 | 102.00 | 1,102.00 | no trade yet |
 | MGC | 0 none | 5 | 4 | 110.50 | 1,110.50 | no trade yet |
 | MGC | 2 range/ATR | 5 | 4 | 110.50 | 1,110.50 | no trade yet |
-| XYZ100 | 0 none | 19 | 15 | 18.57 | 1,018.57 | no trade yet |
-| XYZ100 | 2 range/ATR | 12 | 10 | 8.90 | 1,008.90 | no trade yet |
-| SP500 | 0 none | 19 | 11 | -23.85 | 976.15 | no trade yet |
-| SP500 | 2 range/ATR | 14 | 8 | -28.98 | 971.02 | no trade yet |
-| GOLD | 0 none | 19 | 4 | -67.87 | 932.13 | no trade yet |
-| GOLD | 2 range/ATR | 15 | 1 | -66.09 | 933.91 | no trade yet |
-| WTIOIL | 0 none | 19 | 15 | 26.31 | 1,026.31 | no trade yet |
-| WTIOIL | 2 range/ATR | 14 | 11 | 18.80 | 1,018.80 | no trade yet |
-| BRENTOIL | 0 none | 19 | 16 | 58.25 | 1,058.25 | no trade yet |
-| BRENTOIL | 2 range/ATR | 15 | 13 | 59.59 | 1,059.59 | no trade yet |
-| LT_US100 | 0 none | 19 | 13 | 6.30 | 1,006.30 | no trade yet |
-| LT_US100 | 2 range/ATR | 13 | 8 | -19.27 | 980.73 | no trade yet |
-| LT_US500 | 0 none | 19 | 9 | -21.04 | 978.96 | no trade yet |
-| LT_US500 | 2 range/ATR | 11 | 6 | -36.87 | 963.13 | no trade yet |
-| LT_XAU | 0 none | 19 | 16 | 41.50 | 1,041.50 | no trade yet |
-| LT_XAU | 2 range/ATR | 15 | 12 | 17.54 | 1,017.54 | no trade yet |
-| LT_WTI | 0 none | 19 | 16 | 47.79 | 1,047.79 | no trade yet |
-| LT_WTI | 2 range/ATR | 13 | 11 | 38.52 | 1,038.52 | no trade yet |
-| LT_BRENT | 0 none | 19 | 16 | 63.13 | 1,063.13 | no trade yet |
-| LT_BRENT | 2 range/ATR | 16 | 14 | 64.10 | 1,064.10 | no trade yet |
+| XYZ100 | 0 none | 20 | 16 | 22.29 | 1,022.29 | Asia: short 2.807e+04, stop 2.817e+04, target 2.803e+04: closed (target) $3.72 |
+| XYZ100 | 2 range/ATR | 13 | 11 | 12.62 | 1,012.62 | Asia: short 2.807e+04, stop 2.817e+04, target 2.803e+04: closed (target) $3.72 |
+| SP500 | 0 none | 20 | 12 | -22.46 | 977.54 | Asia: short 7576, stop 7590, target 7571: closed (target) $1.39 |
+| SP500 | 2 range/ATR | 15 | 9 | -27.59 | 972.41 | Asia: short 7576, stop 7590, target 7571: closed (target) $1.39 |
+| GOLD | 0 none | 20 | 4 | -69.39 | 930.61 | Asia: short 3886, stop 3898, target 3881: closed (target) $-1.52 |
+| GOLD | 2 range/ATR | 16 | 1 | -67.61 | 932.39 | Asia: short 3886, stop 3898, target 3881: closed (target) $-1.52 |
+| WTIOIL | 0 none | 20 | 16 | 30.18 | 1,030.18 | Asia: short 87.08, stop 87.39, target 86.95: closed (target) $3.87 |
+| WTIOIL | 2 range/ATR | 15 | 12 | 22.67 | 1,022.67 | Asia: short 87.08, stop 87.39, target 86.95: closed (target) $3.87 |
+| BRENTOIL | 0 none | 20 | 17 | 61.61 | 1,061.61 | Asia: short 92.8, stop 93.1, target 92.68: closed (target) $3.35 |
+| BRENTOIL | 2 range/ATR | 16 | 14 | 62.94 | 1,062.94 | Asia: short 92.8, stop 93.1, target 92.68: closed (target) $3.35 |
+| LT_US100 | 0 none | 20 | 14 | 10.26 | 1,010.26 | Asia: short 2.807e+04, stop 2.817e+04, target 2.804e+04: closed (target) $3.96 |
+| LT_US100 | 2 range/ATR | 14 | 9 | -15.31 | 984.69 | Asia: short 2.807e+04, stop 2.817e+04, target 2.804e+04: closed (target) $3.96 |
+| LT_US500 | 0 none | 20 | 10 | -19.49 | 980.51 | Asia: short 7577, stop 7592, target 7573: closed (target) $1.55 |
+| LT_US500 | 2 range/ATR | 12 | 7 | -35.31 | 964.69 | Asia: short 7577, stop 7592, target 7573: closed (target) $1.55 |
+| LT_XAU | 0 none | 20 | 17 | 45.21 | 1,045.21 | Asia: short 3889, stop 3903, target 3885: closed (target) $3.71 |
+| LT_XAU | 2 range/ATR | 16 | 13 | 21.25 | 1,021.25 | Asia: short 3889, stop 3903, target 3885: closed (target) $3.71 |
+| LT_WTI | 0 none | 20 | 17 | 51.60 | 1,051.60 | Asia: short 87.05, stop 87.35, target 86.94: closed (target) $3.80 |
+| LT_WTI | 2 range/ATR | 14 | 12 | 42.33 | 1,042.33 | Asia: short 87.05, stop 87.35, target 86.94: closed (target) $3.80 |
+| LT_BRENT | 0 none | 20 | 17 | 67.89 | 1,067.89 | Asia: short 92.72, stop 93.1, target 92.58: closed (target) $4.76 |
+| LT_BRENT | 2 range/ATR | 17 | 15 | 68.86 | 1,068.86 | Asia: short 92.72, stop 93.1, target 92.58: closed (target) $4.76 |
 
-**Total P/L across all accounts: $700.83**
+**Total P/L across all accounts: $758.04**
 
 ## Recent trades
 
 | Date | Market | Filter | Session | Side | Size | Entry | Stop | Target | Exit | Result | P/L $ |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 2026-11-15 | LT_XAU | 2 | Asia | short | 0.771 | 3889 | 3903 | 3885 | 3885 | target | 3.71 |
+| 2026-11-15 | SP500 | 2 | Asia | short | 0.3959 | 7576 | 7590 | 7571 | 7571 | target | 1.39 |
+| 2026-11-15 | BRENTOIL | 2 | Asia | short | 32.3209 | 92.8 | 93.1 | 92.68 | 92.68 | target | 3.35 |
+| 2026-11-15 | GOLD | 2 | Asia | short | 0.7718 | 3886 | 3898 | 3881 | 3881 | target | -1.52 |
+| 2026-11-15 | LT_US500 | 2 | Asia | short | 0.3958 | 7577 | 7592 | 7573 | 7573 | target | 1.55 |
+| 2026-11-15 | WTIOIL | 2 | Asia | short | 34.4451 | 87.08 | 87.39 | 86.95 | 86.95 | target | 3.87 |
+| 2026-11-15 | LT_BRENT | 2 | Asia | short | 32.345 | 92.72 | 93.1 | 92.58 | 92.58 | target | 4.76 |
+| 2026-11-15 | LT_WTI | 0 | Asia | short | 34.4534 | 87.05 | 87.35 | 86.94 | 86.94 | target | 3.80 |
+| 2026-11-15 | SP500 | 0 | Asia | short | 0.3959 | 7576 | 7590 | 7571 | 7571 | target | 1.39 |
+| 2026-11-15 | LT_BRENT | 0 | Asia | short | 32.345 | 92.72 | 93.1 | 92.58 | 92.58 | target | 4.76 |
+| 2026-11-15 | LT_XAU | 0 | Asia | short | 0.771 | 3889 | 3903 | 3885 | 3885 | target | 3.71 |
+| 2026-11-15 | WTIOIL | 0 | Asia | short | 34.4451 | 87.08 | 87.39 | 86.95 | 86.95 | target | 3.87 |
+| 2026-11-15 | LT_US100 | 0 | Asia | short | 0.1068 | 2.807e+04 | 2.817e+04 | 2.804e+04 | 2.804e+04 | target | 3.96 |
+| 2026-11-15 | XYZ100 | 0 | Asia | short | 0.1068 | 2.807e+04 | 2.817e+04 | 2.803e+04 | 2.803e+04 | target | 3.72 |
+| 2026-11-15 | LT_US500 | 0 | Asia | short | 0.3958 | 7577 | 7592 | 7573 | 7573 | target | 1.55 |
+| 2026-11-15 | LT_US100 | 2 | Asia | short | 0.1068 | 2.807e+04 | 2.817e+04 | 2.804e+04 | 2.804e+04 | target | 3.96 |
+| 2026-11-15 | LT_WTI | 2 | Asia | short | 34.4534 | 87.05 | 87.35 | 86.94 | 86.94 | target | 3.80 |
+| 2026-11-15 | BRENTOIL | 0 | Asia | short | 32.3209 | 92.8 | 93.1 | 92.68 | 92.68 | target | 3.35 |
+| 2026-11-15 | XYZ100 | 2 | Asia | short | 0.1068 | 2.807e+04 | 2.817e+04 | 2.803e+04 | 2.803e+04 | target | 3.72 |
+| 2026-11-15 | GOLD | 0 | Asia | short | 0.7718 | 3886 | 3898 | 3881 | 3881 | target | -1.52 |
 | 2026-11-13 | MNQ | 0 | Original | long | 1 | 2.83e+04 | 2.826e+04 | 2.833e+04 | 2.833e+04 | target | 45.00 |
 | 2026-11-13 | LT_XAU | 2 | Original | short | 0.7697 | 3896 | 3907 | 3893 | 3893 | target | 2.78 |
 | 2026-11-13 | LT_XAU | 2 | London | short | 0.7702 | 3894 | 3903 | 3891 | 3904 | stop | -8.33 |
@@ -83,25 +103,5 @@ Each row is a separate fake $1,000 account. Same rules on every market; 0.5R tar
 | 2026-11-13 | WTIOIL | 0 | NY | long | 33.9151 | 88.47 | 88.01 | 88.68 | 87.99 | stop | -16.97 |
 | 2026-11-13 | LT_US100 | 0 | Original | long | 0.1064 | 2.819e+04 | 2.814e+04 | 2.82e+04 | 2.82e+04 | target | 0.91 |
 | 2026-11-13 | LT_US100 | 0 | London | short | 0.1065 | 2.815e+04 | 2.823e+04 | 2.812e+04 | 2.824e+04 | stop | -10.00 |
-| 2026-11-13 | LT_US100 | 0 | NY | short | 0.0843 | 2.804e+04 | 2.828e+04 | 2.793e+04 | 2.793e+04 | target | 9.28 |
-| 2026-11-13 | MCL | 2 | Original | long | 1 | 88.83 | 88.36 | 89.05 | 89.05 | target | 20.50 |
-| 2026-11-13 | MNQ | 2 | Original | long | 1 | 2.83e+04 | 2.826e+04 | 2.833e+04 | 2.833e+04 | target | 45.00 |
-| 2026-11-13 | XYZ100 | 0 | Original | long | 0.1064 | 2.82e+04 | 2.814e+04 | 2.822e+04 | 2.822e+04 | target | 1.63 |
-| 2026-11-13 | XYZ100 | 0 | London | short | 0.1065 | 2.815e+04 | 2.823e+04 | 2.812e+04 | 2.823e+04 | stop | -9.73 |
-| 2026-11-13 | XYZ100 | 0 | NY | short | 0.0884 | 2.805e+04 | 2.828e+04 | 2.794e+04 | 2.794e+04 | target | 9.05 |
-| 2026-11-13 | MES | 2 | Original | short | 1 | 7604 | 7611 | 7601 | 7611 | stop | -37.75 |
-| 2026-11-13 | LT_US500 | 0 | Original | long | 0.3954 | 7588 | 7581 | 7588 | 7579 | stop | -3.50 |
-| 2026-11-13 | LT_US500 | 0 | London | short | 0.3959 | 7575 | 7593 | 7569 | 7595 | stop | -8.09 |
-| 2026-11-13 | LT_US500 | 0 | NY | short | 0.3959 | 7575 | 7621 | 7555 | 7555 | target | 7.87 |
-| 2026-11-13 | LT_US100 | 2 | Original | long | 0.1064 | 2.819e+04 | 2.814e+04 | 2.82e+04 | 2.82e+04 | target | 0.91 |
-| 2026-11-13 | LT_US100 | 2 | London | short | 0.1065 | 2.815e+04 | 2.823e+04 | 2.812e+04 | 2.824e+04 | stop | -10.00 |
-| 2026-11-13 | MGC | 0 | Original | short | 1 | 3898 | 3908 | 3894 | 3894 | target | 47.50 |
-| 2026-11-13 | MES | 0 | Original | short | 1 | 7604 | 7611 | 7601 | 7611 | stop | -37.75 |
-| 2026-11-13 | LT_WTI | 2 | Original | long | 34.1701 | 87.82 | 87.33 | 88.03 | 88.03 | target | 6.98 |
-| 2026-11-13 | LT_WTI | 2 | London | long | 34.0936 | 88.02 | 87.48 | 88.25 | 87.46 | stop | -19.22 |
-| 2026-11-13 | LT_WTI | 2 | NY | long | 33.917 | 88.48 | 88 | 88.68 | 87.98 | stop | -17.03 |
-| 2026-11-13 | BRENTOIL | 0 | Original | long | 31.9533 | 93.91 | 93.37 | 94.14 | 94.14 | target | 7.09 |
-| 2026-11-13 | BRENTOIL | 0 | London | short | 32.0862 | 93.48 | 93.85 | 93.32 | 93.87 | stop | -13.10 |
-| 2026-11-13 | BRENTOIL | 0 | NY | long | 31.7961 | 94.37 | 94.05 | 94.5 | 94.03 | stop | -11.34 |
 
 _Free data can be late and fills are idealised, so treat this as a rough test. Not financial advice._
