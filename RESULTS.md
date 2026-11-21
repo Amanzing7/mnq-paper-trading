@@ -4,10 +4,10 @@ Each row is a separate fake $1,000 account. Same rules on every market; 0.5R tar
 
 | Market | Filter | Closed trades | Wins | P/L $ | Balance $ | Today |
 |---|---|---|---|---|---|---|
-| MNQ | 0 none | 7 | 7 | 380.75 | 1,380.75 | Original: short 2.631e+04, stop 2.636e+04, target 2.628e+04: closed (target) $49.50 |
-| MNQ | 2 range/ATR | 7 | 7 | 380.75 | 1,380.75 | Original: short 2.631e+04, stop 2.636e+04, target 2.628e+04: closed (target) $49.50 |
-| MES | 0 none | 10 | 7 | 0.62 | 1,000.62 | Original: short 7155, stop 7166, target 7150: closed (target) $24.75 |
-| MES | 2 range/ATR | 8 | 5 | -22.62 | 977.38 | Original: short 7155, stop 7166, target 7150: closed (target) $24.75 |
+| MNQ | 0 none | 7 | 7 | 381.00 | 1,381.00 | Original: short 2.631e+04, stop 2.636e+04, target 2.628e+04: closed (target) $49.50 |
+| MNQ | 2 range/ATR | 7 | 7 | 381.00 | 1,381.00 | Original: short 2.631e+04, stop 2.636e+04, target 2.628e+04: closed (target) $49.50 |
+| MES | 0 none | 10 | 7 | 1.25 | 1,001.25 | Original: short 7155, stop 7166, target 7150: closed (target) $25.38 |
+| MES | 2 range/ATR | 8 | 5 | -22.00 | 978.00 | Original: short 7155, stop 7166, target 7150: closed (target) $25.38 |
 | MYM | 0 none | 10 | 5 | -103.50 | 896.50 | Original: short 4.905e+04, stop 4.912e+04, target 4.902e+04: closed (stop) $-38.00 |
 | MYM | 2 range/ATR | 7 | 3 | -99.25 | 900.75 | Original: short 4.905e+04, stop 4.912e+04, target 4.902e+04: closed (stop) $-38.00 |
 | M2K | 0 none | 10 | 7 | -13.00 | 987.00 | Original: short 2651, stop 2656, target 2649: closed (stop) $-26.00 |
@@ -37,7 +37,7 @@ Each row is a separate fake $1,000 account. Same rules on every market; 0.5R tar
 | LT_BRENT | 0 none | 39 | 28 | 16.69 | 1,016.69 | Original: long 89.98, stop 89.54, target 90.16: closed (target) $5.94; London: short 89.24, stop 89.94, target 88.94: closed (target) $9.20; NY: short 88.13, stop 88.96, target 87.76: closed (stop) $-21.32 |
 | LT_BRENT | 2 range/ATR | 32 | 24 | 14.11 | 1,014.11 | London: short 89.24, stop 89.94, target 88.94: closed (target) $9.20; NY: short 88.13, stop 88.96, target 87.76: closed (stop) $-21.32 |
 
-**Total P/L across all accounts: $918.48**
+**Total P/L across all accounts: $920.23**
 
 ## Recent trades
 
@@ -66,7 +66,7 @@ Each row is a separate fake $1,000 account. Same rules on every market; 0.5R tar
 | 2026-11-20 | LT_XAU | 2 | NY | long | 0.8375 | 3583 | 3567 | 3590 | 3566 | stop | -14.61 |
 | 2026-11-20 | LT_BRENT | 2 | London | short | 29.8507 | 89.24 | 89.94 | 88.94 | 88.94 | target | 9.20 |
 | 2026-11-20 | LT_BRENT | 2 | NY | short | 25.0 | 88.13 | 88.96 | 87.76 | 88.99 | stop | -21.32 |
-| 2026-11-20 | MES | 2 | Original | short | 1 | 7155 | 7166 | 7150 | 7150 | target | 24.75 |
+| 2026-11-20 | MES | 2 | Original | short | 1 | 7155 | 7166 | 7150 | 7150 | target | 25.38 |
 | 2026-11-20 | MYM | 2 | Original | short | 1 | 4.905e+04 | 4.912e+04 | 4.902e+04 | 4.913e+04 | stop | -38.00 |
 | 2026-11-20 | LT_US500 | 0 | Original | short | 0.42 | 7140 | 7153 | 7136 | 7136 | target | 1.39 |
 | 2026-11-20 | LT_US500 | 0 | London | long | 0.4185 | 7169 | 7155 | 7173 | 7153 | stop | -6.91 |
@@ -101,7 +101,7 @@ Each row is a separate fake $1,000 account. Same rules on every market; 0.5R tar
 | 2026-11-20 | XYZ100 | 0 | Original | short | 0.1142 | 2.625e+04 | 2.63e+04 | 2.623e+04 | 2.623e+04 | target | 1.66 |
 | 2026-11-20 | XYZ100 | 0 | London | short | 0.114 | 2.629e+04 | 2.638e+04 | 2.626e+04 | 2.626e+04 | target | 3.36 |
 | 2026-11-20 | XYZ100 | 0 | NY | long | 0.0823 | 2.631e+04 | 2.606e+04 | 2.643e+04 | 2.643e+04 | target | 9.18 |
-| 2026-11-20 | MES | 0 | Original | short | 1 | 7155 | 7166 | 7150 | 7150 | target | 24.75 |
+| 2026-11-20 | MES | 0 | Original | short | 1 | 7155 | 7166 | 7150 | 7150 | target | 25.38 |
 | 2026-11-20 | LT_BRENT | 0 | Original | long | 33.3518 | 89.98 | 89.54 | 90.16 | 90.16 | target | 5.94 |
 
 _Free data can be late and fills are idealised, so treat this as a rough test. Not financial advice._
