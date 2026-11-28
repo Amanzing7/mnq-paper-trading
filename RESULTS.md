@@ -16,26 +16,26 @@ Each row is a separate fake $1,000 account. Same rules on every market; 0.5R tar
 | MCL | 2 range/ATR | 12 | 11 | 197.00 | 1,197.00 | no trade yet |
 | MGC | 0 none | 9 | 7 | 154.00 | 1,154.00 | no trade yet |
 | MGC | 2 range/ATR | 9 | 7 | 154.00 | 1,154.00 | no trade yet |
-| XYZ100 | 0 none | 59 | 45 | 24.18 | 1,024.18 | Original: short 2.675e+04, stop 2.682e+04, target 2.673e+04: closed (target) $2.22; London: long 2.673e+04, stop 2.664e+04, target 2.677e+04: closed (target) $3.80; NY: short 2.62e+04, stop 2.654e+04, target 2.605e+04: closed (stop) $-20.92 |
-| XYZ100 | 2 range/ATR | 44 | 36 | 50.20 | 1,050.20 | Original: short 2.675e+04, stop 2.682e+04, target 2.673e+04: closed (target) $2.22; London: long 2.673e+04, stop 2.664e+04, target 2.677e+04: closed (target) $3.80 |
-| SP500 | 0 none | 59 | 40 | -71.70 | 928.30 | Original: long 7311, stop 7304, target 7313: closed (target) $0.05; London: long 7314, stop 7299, target 7319: closed (target) $1.51; NY: short 7214, stop 7274, target 7186: closed (stop) $-21.42 |
-| SP500 | 2 range/ATR | 46 | 32 | -52.59 | 947.41 | London: long 7314, stop 7299, target 7319: closed (target) $1.51 |
-| GOLD | 0 none | 59 | 11 | -332.57 | 667.43 | Original: long 3654, stop 3641, target 3659: closed (target) $-1.12; London: long 3680, stop 3661, target 3689: closed (time) $-9.53; NY: long 3645, stop 3626, target 3653: closed (stop) $-21.24 |
-| GOLD | 2 range/ATR | 51 | 6 | -314.74 | 685.26 | Original: long 3654, stop 3641, target 3659: closed (target) $-1.12; London: long 3680, stop 3661, target 3689: closed (time) $-9.53; NY: long 3645, stop 3626, target 3653: closed (stop) $-21.24 |
-| WTIOIL | 0 none | 59 | 43 | 23.29 | 1,023.29 | Original: short 86.06, stop 86.33, target 85.95: closed (target) $3.20; London: short 85.84, stop 86.26, target 85.65: closed (target) $5.99; NY: short 83.7, stop 84.17, target 83.5: closed (target) $6.89 |
-| WTIOIL | 2 range/ATR | 49 | 36 | 19.79 | 1,019.79 | Original: short 86.06, stop 86.33, target 85.95: closed (target) $3.20; London: short 85.84, stop 86.26, target 85.65: closed (target) $5.99; NY: short 83.7, stop 84.17, target 83.5: closed (target) $6.89 |
-| BRENTOIL | 0 none | 59 | 42 | 40.16 | 1,040.16 | Original: short 92.57, stop 92.8, target 92.49: closed (target) $2.25; London: short 92.26, stop 92.85, target 91.99: closed (target) $8.21; NY: short 91.06, stop 91.3, target 90.97: closed (target) $2.43 |
-| BRENTOIL | 2 range/ATR | 50 | 38 | 64.89 | 1,064.89 | Original: short 92.57, stop 92.8, target 92.49: closed (target) $2.25; London: short 92.26, stop 92.85, target 91.99: closed (target) $8.21; NY: short 91.06, stop 91.3, target 90.97: closed (target) $2.43 |
-| LT_US100 | 0 none | 59 | 41 | -7.90 | 992.10 | Original: short 2.676e+04, stop 2.683e+04, target 2.674e+04: closed (target) $2.63; London: long 2.675e+04, stop 2.665e+04, target 2.679e+04: closed (target) $4.26; NY: short 2.621e+04, stop 2.655e+04, target 2.606e+04: closed (stop) $-20.94 |
-| LT_US100 | 2 range/ATR | 45 | 32 | 2.25 | 1,002.25 | Original: short 2.676e+04, stop 2.683e+04, target 2.674e+04: closed (target) $2.63; London: long 2.675e+04, stop 2.665e+04, target 2.679e+04: closed (target) $4.26 |
-| LT_US500 | 0 none | 59 | 35 | -55.78 | 944.22 | Original: long 7316, stop 7306, target 7317: closed (target) $0.70; London: long 7319, stop 7304, target 7323: closed (target) $1.72; NY: short 7219, stop 7276, target 7194: closed (stop) $-21.58 |
-| LT_US500 | 2 range/ATR | 43 | 28 | -66.46 | 933.54 | Original: long 7316, stop 7306, target 7317: closed (target) $0.70; London: long 7319, stop 7304, target 7323: closed (target) $1.72 |
-| LT_XAU | 0 none | 59 | 43 | -32.47 | 967.53 | Original: long 3654, stop 3642, target 3659: closed (target) $3.89; London: long 3680, stop 3661, target 3687: closed (target) $6.31; NY: long 3648, stop 3628, target 3657: closed (stop) $-17.98 |
-| LT_XAU | 2 range/ATR | 50 | 36 | -38.61 | 961.39 | Original: long 3654, stop 3642, target 3659: closed (target) $3.89; London: long 3680, stop 3661, target 3687: closed (target) $6.31; NY: long 3648, stop 3628, target 3657: closed (stop) $-17.98 |
-| LT_WTI | 0 none | 59 | 46 | 91.02 | 1,091.02 | Original: short 86.04, stop 86.31, target 85.95: closed (target) $3.30; London: short 85.85, stop 86.26, target 85.67: closed (target) $5.95; NY: short 83.71, stop 84.17, target 83.52: closed (target) $6.93 |
-| LT_WTI | 2 range/ATR | 48 | 39 | 91.63 | 1,091.63 | Original: short 86.04, stop 86.31, target 85.95: closed (target) $3.30; London: short 85.85, stop 86.26, target 85.67: closed (target) $5.95; NY: short 83.71, stop 84.17, target 83.52: closed (target) $6.93 |
-| LT_BRENT | 0 none | 59 | 43 | 36.75 | 1,036.75 | Original: short 92.62, stop 92.85, target 92.55: closed (target) $2.34; London: short 92.33, stop 92.89, target 92.09: closed (target) $7.71; NY: short 91.09, stop 91.34, target 91.01: closed (target) $2.72 |
-| LT_BRENT | 2 range/ATR | 49 | 37 | 39.28 | 1,039.28 | Original: short 92.62, stop 92.85, target 92.55: closed (target) $2.34; London: short 92.33, stop 92.89, target 92.09: closed (target) $7.71; NY: short 91.09, stop 91.34, target 91.01: closed (target) $2.72 |
+| XYZ100 | 0 none | 59 | 45 | 24.18 | 1,024.18 | no trade yet |
+| XYZ100 | 2 range/ATR | 44 | 36 | 50.20 | 1,050.20 | no trade yet |
+| SP500 | 0 none | 59 | 40 | -71.70 | 928.30 | no trade yet |
+| SP500 | 2 range/ATR | 46 | 32 | -52.59 | 947.41 | no trade yet |
+| GOLD | 0 none | 59 | 11 | -332.57 | 667.43 | no trade yet |
+| GOLD | 2 range/ATR | 51 | 6 | -314.74 | 685.26 | no trade yet |
+| WTIOIL | 0 none | 59 | 43 | 23.29 | 1,023.29 | no trade yet |
+| WTIOIL | 2 range/ATR | 49 | 36 | 19.79 | 1,019.79 | no trade yet |
+| BRENTOIL | 0 none | 59 | 42 | 40.16 | 1,040.16 | no trade yet |
+| BRENTOIL | 2 range/ATR | 50 | 38 | 64.89 | 1,064.89 | no trade yet |
+| LT_US100 | 0 none | 59 | 41 | -7.90 | 992.10 | no trade yet |
+| LT_US100 | 2 range/ATR | 45 | 32 | 2.25 | 1,002.25 | no trade yet |
+| LT_US500 | 0 none | 59 | 35 | -55.78 | 944.22 | no trade yet |
+| LT_US500 | 2 range/ATR | 43 | 28 | -66.46 | 933.54 | no trade yet |
+| LT_XAU | 0 none | 59 | 43 | -32.47 | 967.53 | no trade yet |
+| LT_XAU | 2 range/ATR | 50 | 36 | -38.61 | 961.39 | no trade yet |
+| LT_WTI | 0 none | 59 | 46 | 91.02 | 1,091.02 | no trade yet |
+| LT_WTI | 2 range/ATR | 48 | 39 | 91.63 | 1,091.63 | no trade yet |
+| LT_BRENT | 0 none | 59 | 43 | 36.75 | 1,036.75 | no trade yet |
+| LT_BRENT | 2 range/ATR | 49 | 37 | 39.28 | 1,039.28 | no trade yet |
 
 **Total P/L across all accounts: $261.88**
 
